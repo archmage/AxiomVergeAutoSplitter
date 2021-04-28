@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" viewBox="0 0 15 15">
+  <defs>
+    <clipPath id="clip-Frame">
+      <rect width="15" height="15"/>
+    </clipPath>
+  </defs>
+  <g id="Frame" clip-path="url(#clip-Frame)">
+    <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(5 5)" stroke="#9317d7" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="5">
+      <rect width="5" height="5" stroke="none"/>
+      <rect x="-2.5" y="-2.5" width="10" height="10" fill="none"/>
+    </g>
+  </g>
+</svg>

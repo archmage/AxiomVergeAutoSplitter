@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="192" viewBox="0 0 256 192">
+  <defs>
+    <clipPath id="clip-Clone">
+      <rect width="256" height="192"/>
+    </clipPath>
+  </defs>
+  <g id="Clone" clip-path="url(#clip-Clone)">
+    <image id="DeformedTraceIdle0003" width="256" height="192" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAYAAAChS3wfAAAAB3RJTUUH3ggHBBcKqxhh0wAAABd0RVh0U29mdHdhcmUAR0xEUE5HIHZlciAzLjRxhaThAAAACHRwTkdHTEQzAAAAAEqAKR8AAAAEZ0FNQQAAsY8L/GEFAAAABmJLR0QA/wD/AP+gvaeTAAAC+0lEQVR4nN2ZPU7EMBCFcwdOkIIWibvQoNyBio6Ka9IhVrQcIZDVWnq8fTO2E09+FmlQ4iSbvM9vxo7TjePY7SH+/qZ/4+r33Vq4B6BfAcrmIrEdj03bwy0CUKK2Er8LAKVtNwFAicvtHxqAyvlpPxW3FD0ByNWKQwHg3h0fHs9tqX2ANjxfgYtwRrzFhL1Z8LTf03ZHEZUWqwAYSEgNgCFQ/CoA0AUoKInsu//pgNs9wTokALYwikwAetpHl6jZYMtiuAqAt9cXWeA4z9kplviWjggX/336OscEIfU2n8Mu4FBO2j0AFo8Wx3Mmq+PQqGoEDp+t5wLhAFIKIIR0HMViqFSwUmLXAKb4OX1IO6eeV73vgWn+nFEAklAEgO0sTgWmQMQ0OBwAOoHb0AGWC7xR4jAAGERtqInSYYZBFP58f3cVauzPTZRau2A14Z/vT+fIQbBGg4j8DwOAwhUEBJGO51IhrKOiACiRSyFEwAjrfQ8Ab/M1XDO4Ruy6BiixFgAPELcdqgh6LsgBsNoQwq5ToCQNlL1LoHCdOAwAT+QcAHjtrgF4Qq0Kbx1XYFpACBdfM7xZ56p04fTaHEB6OC5ynuDcC0/OJS2c0Ey8mtxYor31/1oI7J7VAZTm9hTWik9uQaQWRo0jFov3bOy91+Pyd25tIAdBjRaljlgMgBcrVc/KN7vLdZZoBlLqhloXLBLfd9d2xa85lpU94QpAqhe8ODpHcHMApfHvJUbYvWSJTDmKO6EWwqLcVyu31oIG7rNArw5YMPnbIoMJA6AsbBU09ZGDz/Wu4/z3AM9NhcW5j19xS3tSFTkvJXKjggWnKQAsYJYt5wDIFUF1rfU1mb8oNxkF+CbK8h4UbwirAaLmFL24juHkQBTle67HS8dkr5LXwLNGAe93LQim1UuHuaG7fmhV+HCOYPWY5RCGyJMv6zwF0QSQsyU+vOohlb+1oCyre4LYEd78QEGQwjnnB/GDSpRX+BQUy8p83EsPK03ZGeqel6ifX99S/ALGqtmE2xSITQAAAABJRU5ErkJggg=="/>
+  </g>
+</svg>

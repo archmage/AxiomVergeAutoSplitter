@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-RepairDronesEnabled">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="RepairDronesEnabled" clip-path="url(#clip-RepairDronesEnabled)">
+    <image id="RepairDrone" width="32" height="26" transform="translate(16 19)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAMAAACXZR4WAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAPUExURQAAAKS61lRhcpHk/wAAAEa2YrYAAAAFdFJOU/////8A+7YOUwAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAFhJREFUGFc9jgEOxEAIAtHy/zcfg+0ZsgmzisoW5a9kDfVn0hbM7BFpjuQtCSgphTASU7/kJHS3LA1Pwa0l+wUJYXMaD5yPS1MzshYxgzoSeF8VMYgTbPkHo0QBZsc5WrEAAAAASUVORK5CYII="/>
+  </g>
+</svg>

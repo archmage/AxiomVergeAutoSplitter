@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-FirstDeath">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="FirstDeath" clip-path="url(#clip-FirstDeath)">
+    <image id="FirstDeath-2" data-name="FirstDeath" width="64" height="22.326" transform="translate(0 21)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAPCAMAAABKvsbSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAhUExURQAAAJhbQVcxICgWETojGtZ2Sv8AAHwTBjMnIvSyoAAAAFiSbJYAAAALdFJOU/////////////8ASk8B8gAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAK5JREFUKFOF0IESgiAQhOELQZH3f+D2X2BSmmyd4qCv8zTakpgZ+0uWo4jXzDe/7z/SWRuNtedik+pllJuFJkULjGwcE1Yjx7OmxA/6ylylsCslxy5oy4EA/aAHOHcsiN8j2+pGQupoWqusKgE4OKtgiGixKeNdQbGaOU60Ls8Ap6lptabrzDnG4P76h3uTOfISsC21Pn4FP2IyqZ/tMb276V+L9oNRef8c9RZr7Q0YTQ2gT8j/7gAAAABJRU5ErkJggg=="/>
+  </g>
+</svg>
