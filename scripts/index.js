@@ -83,6 +83,7 @@ var progressionItems = {
 	GlitchTeleport: "Modified Lab Coat",
 	DroneGun: "Remote Drone",
 	AddressDisruptor2: "Address Disruptor 2",
+	Grapple: "Grapple",
 	BlackCoat: "Trenchcoat",
 	GlitchBomb: "Address Bomb",
 	DroneTeleport: "Drone Teleport",
@@ -92,10 +93,26 @@ var progressionItems = {
 // partially implemented, sorry!
 var replacedNames = {
 	// weapons
+	VerticalSpread: "Hypo-Atomizer",
+	FireWall: "Firewall",
+	DataGrenade: "Data Bomb",
+	WallTrace: "Orbital Discharge",
 	Swim: "Quantum Variegator",
+	InertialPulse: "Inertial Pulse",
+	DistortionField: "Distortion Field",
+	LightningGun: "Lightning Gun",
+	TetheredCharge: "Tethered Charge",
+	WebSlicer: "Scissor Beam",
+	HeatSeeker: "Heat Seeker",
 
 	// other items
-	BreachSuppressor: "Sudran Key"
+	EnhancedLaunch: "Enhanced Drone Launch",
+	BreachSuppressor: "Sudran Key",
+	TendrilsTop: "Bioflux Accelerator",
+	TendrilsBottom: "Bioflux Accelerator",
+
+	// events
+	RepairDronesEnabled: "Repair Drones Enabled"
 }
 
 var bossNames = {
@@ -126,7 +143,7 @@ function IGTFormattedString(timestamp) {
 	var totalHours = totalMinutes / 60
 	var hours = Math.floor(totalHours)
 
-	var hoursFormatted = hours < 1 ? "" : `${Math.floor(hours).toString().padStart(2, '0')}:`
+	var hoursFormatted = hours < 1 ? "" : `${Math.floor(hours).toString()}:`
 	var minutesFormatted = Math.floor(minutes).toString()
 	if (hours > 0) minutesFormatted = minutesFormatted.padStart(2, '0')
 
