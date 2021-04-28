@@ -24,12 +24,12 @@ function appendData(data) {
 	console.log(data);
 	data.SplitsNames.map(split => {
 		if (split.includes("Note")) {
-			splits.innerHTML += `<div class="row"><img src="images/DigitalPaper.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			// splits.innerHTML += `<div class="row"><img src="images/DigitalPaper.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split.includes("HealthNode")) {
 			if (split.includes("Fragment")) {
-				splits.innerHTML += `<div class="row"><img src="images/HealthNodeFragment.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+				// splits.innerHTML += `<div class="row"><img src="images/HealthNodeFragment.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 				return;
 			}
 			else {
@@ -39,7 +39,7 @@ function appendData(data) {
 		}
 		if (split.includes("PowerNode")) {
 			if (split.includes("Fragment")) {
-				splits.innerHTML += `<div class="row"><img src="images/PowerNodeFragment.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+				// splits.innerHTML += `<div class="row"><img src="images/PowerNodeFragment.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 				return;
 			}
 			else {
@@ -56,46 +56,71 @@ function appendData(data) {
 			return;
 		}
 		if (split == "SecurityWorm") {
-			splits.innerHTML += `<div class="row"><img src="images/Xedur.svg"/><div class="name">Xedur</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/Xedur.svg"/><div class="bossname">Xedur</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "SoldierBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/Telal.svg"/><div class="name">Telal</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/Telal.svg"/><div class="bossname">Telal</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "SlugBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/Uruku.svg"/><div class="name">Uruku</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/Uruku.svg"/><div class="bossname">Uruku</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "ScorpionBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/GirTab.svg"/><div class="name">Gir-Tab</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/GirTab.svg"/><div class="bossname">Gir-Tab</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "MantaBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/Vision.svg"/><div class="name">Vision</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/Vision.svg"/><div class="bossname">Vision</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "DeformedTrace") {
-			splits.innerHTML += `<div class="row"><img src="images/Clone.svg"/><div class="name">Clone</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/Clone.svg"/><div class="bossname">Clone</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "SpitBugBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/Ukhu.svg"/><div class="name">Ukhu</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/Ukhu.svg"/><div class="bossname">Ukhu</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "SecurityWormAdvanced")
 		{
-			splits.innerHTML += `<div class="row"><img src="images/Xedur.svg"/><div class="name">Xedur Hul</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/Xedur.svg"/><div class="bossname">Xedur Hul</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "End") {
+			splits.innerHTML += `<div class="row"><img src="images/Athetos.svg"/><div class="bossname">${split}</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			igt.innerHTML = IGTFormattedString(data.Splits["End"]);
 			return;
 		}
-		splits.innerHTML += `<div class="row"><img src="images/${split}.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+		splits.innerHTML += `<div class="row"><img src="images/${split}.svg"/><div class="name">${replaceNames(split)}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 	});
 	pb.innerHTML = IGTFormattedString(data.PersonalBest);
 	document.getElementById("splits").scrollTop = document.getElementById("splits").scrollHeight;
+}
+
+var bossNames = {
+	SecurityWorm: "Xedur",
+	SoldierBoss: "Telal",
+	SlugBoss: "Uruku",
+	ScorpionBoss: "GirTab",
+	MantaBoss: "Vision",
+	DeformedTrace: "Clone",
+	SpitBugBoss: "Ukhu",
+	SecurityWormAdvanced: "Xedur Hul",
+	End: "Athetos"
+}
+
+var replacedNames = {
+	DroneTeleport: "Drone Teleport",
+	GlitchTeleport: "Lab Coat",
+	GlitchBomb: "Address Bomb",
+	DroneGun: "Drone",
+	RedCoat: "Red Coat"
+};
+
+function replaceNames(name) {
+	return name in replacedNames ? replacedNames[name] : name
 }
 
 function IGTFormattedString(timestamp) {
