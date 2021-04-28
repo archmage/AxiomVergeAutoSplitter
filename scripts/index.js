@@ -23,6 +23,11 @@ function appendData(data) {
 	ClearAll();
 	console.log(data);
 	data.SplitsNames.map(split => {
+		if (progressionItems.includes(split))
+		{
+			splits.innerHTML += `<div class="row"><img src="images/${split}.svg"/><div class="name progression">✩ ${replaceNames(split)}</div><div class="split progression">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			return;
+		}
 		if (split.includes("Note")) {
 			// splits.innerHTML += `<div class="row"><img src="images/DigitalPaper.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
@@ -55,41 +60,12 @@ function appendData(data) {
 			splits.innerHTML += `<div class="row"><img src="images/RangeNode.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
-		if (split == "SecurityWorm") {
-			splits.innerHTML += `<div class="row"><img src="images/Xedur.svg"/><div class="bossname">Xedur</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
-			return;
-		}
-		if (split == "SoldierBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/Telal.svg"/><div class="bossname">Telal</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
-			return;
-		}
-		if (split == "SlugBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/Uruku.svg"/><div class="bossname">Uruku</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
-			return;
-		}
-		if (split == "ScorpionBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/GirTab.svg"/><div class="bossname">Gir-Tab</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
-			return;
-		}
-		if (split == "MantaBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/Vision.svg"/><div class="bossname">Vision</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
-			return;
-		}
-		if (split == "DeformedTrace") {
-			splits.innerHTML += `<div class="row"><img src="images/Clone.svg"/><div class="bossname">Clone</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
-			return;
-		}
-		if (split == "SpitBugBoss") {
-			splits.innerHTML += `<div class="row"><img src="images/Ukhu.svg"/><div class="bossname">Ukhu</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
-			return;
-		}
-		if (split == "SecurityWormAdvanced")
+		if (split in bossNames)
 		{
-			splits.innerHTML += `<div class="row"><img src="images/Xedur.svg"/><div class="bossname">Xedur Hul</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row"><img src="images/${bossNames[split]}.svg"/><div class="name boss">${bossNames[split]}</div><div class="split boss">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			return;
 		}
 		if (split == "End") {
-			splits.innerHTML += `<div class="row"><img src="images/Athetos.svg"/><div class="bossname">${split}</div><div class="bosssplit">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			igt.innerHTML = IGTFormattedString(data.Splits["End"]);
 			return;
 		}
@@ -98,6 +74,18 @@ function appendData(data) {
 	pb.innerHTML = IGTFormattedString(data.PersonalBest);
 	document.getElementById("splits").scrollTop = document.getElementById("splits").scrollHeight;
 }
+
+// list of item strings
+var progressionItems = [
+	"Drill",
+	"AddressDisruptor1", 
+	"HighJump",
+	"GlitchTeleport",
+	"DroneGun",
+	"Grapple",
+	"GlitchBomb",
+	"DroneTeleport",
+	"RedCoat"]
 
 var bossNames = {
 	SecurityWorm: "Xedur",
@@ -112,10 +100,11 @@ var bossNames = {
 }
 
 var replacedNames = {
-	DroneTeleport: "Drone Teleport",
+	HighJump: "High Jump",
 	GlitchTeleport: "Lab Coat",
-	GlitchBomb: "Address Bomb",
 	DroneGun: "Drone",
+	GlitchBomb: "Address Bomb",
+	DroneTeleport: "Drone Teleport",
 	RedCoat: "Red Coat"
 };
 
@@ -132,7 +121,16 @@ function IGTFormattedString(timestamp) {
 	var minutes = totalMinutes % 60;
 	var totalHours = totalMinutes / 60;
 	var hours = Math.floor(totalHours);
-	return `${Math.floor(hours).toString().padStart(2, '0')}:${Math.floor(minutes).toString().padStart(2, '0')}:${Math.floor(seconds).toString().padStart(2, '0')}.${Math.floor(milliseconds).toString().padStart(3, '0')}`;
+
+	var hoursFormatted = hours < 1 ? "" :  `${Math.floor(hours).toString().padStart(2, '0')}:`
+	var minutesFormatted = Math.floor(minutes).toString()
+	if (hours > 0) minutesFormatted = minutesFormatted.padStart(2, '0');
+
+
+	return `${hoursFormatted}${minutesFormatted}:${Math.floor(seconds).toString().padStart(2, '0')}.${Math.floor(milliseconds).toString().padStart(3, '0')}`;
+
+	// old
+	// return `${Math.floor(hours).toString().padStart(2, '0')}:${Math.floor(minutes).toString().padStart(2, '0')}:${Math.floor(seconds).toString().padStart(2, '0')}.${Math.floor(milliseconds).toString().padStart(3, '0')}`;
 }
 
 function ClearAll() {
