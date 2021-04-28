@@ -2,21 +2,21 @@ body {
 	font-family: 'Roboto Mono', monospace;
 	color: white;
 	background: #242424;
-	font-size: 24px;
+	font-size: 12px;
 }
 
 .header {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: calc(100% - 10px);
-	height: calc(32px * 1.5);
+	width: calc(100% - 20px);
+	height: calc(64px - 20px);
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	border: 5px solid transparent;
-	border-image: url(../images/FrameInner.svg) 5 round;
-	background: rgba(36,11,64,0.6);
+	border: 10px solid transparent;
+	border-image: url(../images/FrameInner.svg) 10 round;
+	background: rgba(36,11,34,1);
 	text-align: center;
 	justify-content: center;
 }
@@ -25,24 +25,32 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	height: 64px;
-	line-height: 64px;
+	height: 32px;
+	line-height: 32px;
 }
 
 img {
-	width: 64px;
+	width: 32px;
 }
 
 .name {
 	padding-left: 5px;
-	width: 50%;
+	width: calc(60% - 37px);
 	text-align: left;
 	font-weight: bold;
 }
 
+.boss {
+	color: #d17371;
+}
+
+.progression {
+	color: #d1c877;
+}
+
 .split {
 	padding-right: 5px;
-	width: 50%;
+	width: calc(40% - 37px);
 	text-align: right;
 }
 
@@ -50,14 +58,14 @@ img {
 	position: absolute;
 	top: calc(32px * 1.5 + 15px);
 	left: 0px;
-	width: calc(100% - 10px);
-	height: calc(100% - 96px - 30px - 10px);
+	width: calc(100% - 20px);
+	height: calc(100% - 96px - 30px - 20px);
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
-	border: 5px solid transparent;
-	border-image: url(../images/Frame.svg) 5 round;
-	background: rgba(0,0,0,0.6);
+	border: 10px solid transparent;
+	border-image: url(../images/Frame.svg) 10 round;
+	background: rgba(0,0,0,1);
 	overflow: auto;
 }
 
@@ -69,14 +77,14 @@ img {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
-	width: calc(100% - 10px);
-	height: calc(32px * 1.5);
+	width: calc(100% - 20px);
+	height: calc(64px - 20px);
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	border: 5px solid transparent;
-	border-image: url(../images/FrameInner.svg) 5 round;
-	background: rgba(36,11,64,0.6);
+	border: 10px solid transparent;
+	border-image: url(../images/FrameInner.svg) 10 round;
+	background: rgba(36,11,34,1);
 	text-align: center;
 	justify-content: center;
 }
