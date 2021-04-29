@@ -139,7 +139,7 @@ function appendData(data) {
 	SetTitle(data);
 	data.SplitsNames.map(split => {
 		if (split in Bosses) {
-			splits.innerHTML += `<div class="row boss"><img src="images/${Bosses[split].replace('[ -]', '')}.svg"/><div class="name">${Bosses[split]}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row boss"><img src="images/${Bosses[split].replace(/[ -]/, '')}.svg"/><div class="name">${Bosses[split]}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			if (split == "End") {
 				igt.innerHTML = IGTFormattedString(data.Splits[split]);
 			}
