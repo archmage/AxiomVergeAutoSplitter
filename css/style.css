@@ -1,3 +1,8 @@
+:root {
+	--progression: #d1c877;
+	--boss: #d17371;
+}
+
 body {
 	font-family: 'Roboto Mono', monospace;
 	color: white;
@@ -24,7 +29,7 @@ body {
 .row {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: flex-start;
 	height: 32px;
 	line-height: 32px;
 }
@@ -36,37 +41,35 @@ img {
 .name {
 	font-family: 'Roboto', sans-serif;
 	padding-left: 5px;
-	width: calc(60% - 37px);
+	width: 100%;
 	text-align: left;
 	font-weight: bold;
-	
-	/* debug */
-	/* background: #FF0000; */
-}
-
-.boss {
-	color: #d17371;
-}
-
-.progression {
-	color: #d1c877;
 }
 
 .split {
 	padding-right: 5px;
-	width: calc(40% - 37px);
 	text-align: right;
-
-	/* debug */
-	/* background: #00FF00; */
 }
 
 .boss {
-	color: #d17371;
+	color: var(--boss);
 }
 
 .progression {
-	color: #d1c877;
+	color: var(--progression);
+}
+
+.gomode {
+	color: var(--progression);
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	height: 24px;
+	line-height: 24px;
+}
+
+.gomode .line {
+	border-top: 1px solid var(-progression);
 }
 
 #splits {

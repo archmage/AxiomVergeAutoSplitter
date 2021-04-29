@@ -4,70 +4,41 @@ var splits = document.getElementById("splits")
 var igt = document.getElementById("igt")
 var pb = document.getElementById("pb")
 
-const ProgressionItems = [
-	"AddressDisruptor1",
-	"AddressDisruptor2",
-	"BlackCoat",
-	"BreachSuppressor",
-	"Drill",
-	"DroneGun",
-	"DroneTeleport",
-	"EnhancedLaunch",
-	"GlitchBomb",
-	"GlitchTeleport",
-	"Grapple",
-	"HighJump",
-	"PasswordTool",
-	"RedCoat"
-];
+// I've made these dictionaries so that each can be used for text replacements.
+// This helps to reduce data redundancy. -Arch
 
-const Bosses = {
-	Xedur: "Xedur",
-	Telal: "Telal",
-	Uruku: "Uruku",
-	GirTab: "Gir-Tab",
-	Vision: "Vision",
-	Clone: "Clone",
-	Ukhu: "Ukhu",
-	XedurHul: "Xedur Hul",
-	End: "Athetos",
-}
-
-const NameDictionary = {
-	FirstDeath: "First Death",
-	AddressDisruptor1: "Address Disruptor",
+const ProgressionItems = {
+	AddressDisruptor1: "Address Disruptor 1",
 	AddressDisruptor2: "Address Disruptor 2",
 	BlackCoat: "Trenchcoat",
-	BreachSuppressor: "Sudran Key",
-	DataDisruptor: "Axiom Disruptor",
-	DataGrenade: "Data Bomb",
-	DistortionField: "Distortion Field",
-	Drill: "Drill",
+	Drill: "Laser Drill",
 	DroneGun: "Remote Drone",
 	DroneTeleport: "Drone Teleport",
-	EnhancedLaunch: "Enhanced Drone Launch",
-	FatBeam: "Fat Beam",
-	FireWall: "Fire Wall",
-	FlameThrower: "Flamethrower",
 	GlitchBomb: "Address Bomb",
 	GlitchTeleport: "Modified Lab Coat",
 	Grapple: "Grapple",
-	HeatSeeker: "Heat Seeker",
 	HighJump: "Field Disruptor",
+	RedCoat: "Red Coat"
+}
+
+const Weapons = {
+	DataDisruptor: "Axiom Disruptor",
+	DataGrenade: "Data Bomb",
+	DistortionField: "Distortion Field",
+	FatBeam: "Fat Beam",
+	FireWall: "Firewall",
+	FlameThrower: "Flamethrower",
+	HeatSeeker: "Heat Seeker",
 	InertialPulse: "Inertial Pulse",
 	IonBeam: "Ion Beam",
 	Kilver: "Kilver",
 	LightningGun: "Lightning Gun",
-	MultiDisruptor: "Multi Disruptor",
+	MultiDisruptor: "Multi-Disruptor",
 	Nova: "Nova",
-	PasswordTool: "Password Tool",
-	RedCoat: "Red Coat",
 	Reflect: "Reflector",
 	Scythe: "Reverse Slicer",
 	Shards: "Shards",
 	Swim: "Quantum Variegator",
-	TendrilsBottom: "Bioflux Accelerator Bottom",
-	TendrilsTop: "Bioflux Accelerator Top",
 	TetheredCharge: "Tethered Charge",
 	TriCone: "Turbine Pulse",
 	VerticalSpread: "Hypo-Atomizer",
@@ -76,22 +47,48 @@ const NameDictionary = {
 	WebSlicer: "Scissor Beam",
 }
 
-const Difficulty = [
-	"Normal",
-	"Hard"
-];
+const OtherItems = {
+	BreachSuppressor: "Sudran Key",
+	EnhancedLaunch: "Enhanced Drone Launch",
+	PasswordTool: "Passcode Tool",
+	TendrilsBottom: "Bioflux Accelerator",
+	TendrilsTop: "Bioflux Accelerator",
+}
 
-const Progression = [
-	"Default",
-	"Advanced",
-	"Masochist"
-];
+const Events = {
+	FirstDeath: "First Death",
+	RepairDronesEnabled: "Repair Drones Enabled"
+}
+
+const Bosses = {
+	SecurityWorm: "Xedur",
+	SoldierBoss: "Telal",
+	SlugBoss: "Uruku",
+	ScorpionBoss: "Gir-Tab",
+	MantaBoss: "Vision",
+	DeformedTrace: "Clone",
+	SpitBugBoss: "Ukhu",
+	SecurityWormAdvanced: "Xedur Hul",
+	End: "Athetos"
+}
+
+// if a split name matches a node key, replace the WHOLE text with the value
+// this can have fragments added if needed
+const NodeTypes = {
+	"HealthNode": "Health Node",
+	"PowerNode": "Power Node",
+	"SizeNode": "Size Node",
+	"RangeNode": "Range Node"
+}
+
+const Difficulty = ["Normal", "Hard"]
+const Progression = ["Default", "Advanced", "Masochist"]
 
 window.onload = function () {
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
 	const category = urlParams.get('category')
-	console.log(title, category);
+	console.log(category);
 	if (category != null) {
 		document.getElementById("category").innerHTML = category
 	}
@@ -102,7 +99,7 @@ window.onload = function () {
 function SetTitle(data) {
 	if (data.IsRandomizer) {
 		document.getElementsByClassName("title")[0].innerHTML = "Axiom Verge Randomizer";
-		document.getElementById("category").innerHTML = `${Difficulty[data.Difficulty]} ${Progression[data.Progression]} ${data.Seed}`;
+		document.getElementById("category").innerHTML = `Progression: ${Progression[data.Progression]}`;
 		return;
 	}
 	const queryString = window.location.search;
@@ -117,16 +114,32 @@ function SetTitle(data) {
 	
 }
 
+function checkIfNode(split) {
+	for(var nodeType in NodeTypes) {
+		if(split.includes(nodeType) && !split.includes("Fragment")) return nodeType
+	}
+	return null
+}
+
+// catchall function for all other split names
+function replaceName(name) {
+	if(name in Weapons) return Weapons[name]
+	if(name in OtherItems) return OtherItems[name]
+	if(name in Events) return Events[name]
+
+	return name
+}
+
 function appendData(data) {
 	if (data.AreaName == null) {
-		return
+		return;
 	}
-	ClearAll()
-	console.log(data)
+	ClearAll();
+	console.log(data);
 	SetTitle(data);
 	data.SplitsNames.map(split => {
 		if (split in Bosses) {
-			splits.innerHTML += `<div class="row"><img src="images/${split}.svg"/><div class="name boss">${Bosses[split]}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			splits.innerHTML += `<div class="row boss"><img src="images/${Bosses[split].replace('[ -]', '')}.svg"/><div class="name">${Bosses[split]}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 			if (split == "End") {
 				igt.innerHTML = IGTFormattedString(data.Splits[split]);
 			}
@@ -134,103 +147,36 @@ function appendData(data) {
 		}
 		if (split in ProgressionItems)
 		{
-			splits.innerHTML += `<div class="row"><img src="images/${split}.svg"/><div class="name progression">✩ ${ProgressionItems[split]}</div><div class="split progression">${IGTFormattedString(data.Splits[split])}</div></div>`
-			return
+			splits.innerHTML += `<div class="row progression"><img src="images/${split}.svg"/><div class="name">✩ ${ProgressionItems[split]}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+
+			// go-mode check
+			if(false) {
+				splits.innerHTML += `<div class="gomode"><div class="name">GO MODE</div><div class="line"></div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`
+			}
+
+			return;
 		}
 		if (split.includes("Note")) {
 			// splits.innerHTML += `<div class="row"><img src="images/DigitalPaper.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`
-			return
+			return;
 		}
-		if (split.includes("HealthNode")) {
-			if (split.includes("Fragment")) {
-				// splits.innerHTML += `<div class="row"><img src="images/HealthNodeFragment.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`
-				return
-			}
-			else {
-				splits.innerHTML += `<div class="row"><img src="images/HealthNode.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`
-				return
-			}
+		if(split.includes("Fragment")) {
+			return;
 		}
-		if (split.includes("PowerNode")) {
-			if (split.includes("Fragment")) {
-				// splits.innerHTML += `<div class="row"><img src="images/PowerNodeFragment.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`
-				return
-			}
-			else {
-				splits.innerHTML += `<div class="row"><img src="images/PowerNode.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`
-				return
-			}
+		
+		// condensed handling of all node types
+		// fragment handling has been removed for now, and can be readded if needed
+		var nodeType = checkIfNode(split);
+		if(nodeType != null) {
+			splits.innerHTML += `<div class="row"><img src="images/${nodeType}.svg"/><div class="name">${NodeTypes[nodeType]}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+			return;
 		}
-		if (split.includes("SizeNode")) {
-			splits.innerHTML += `<div class="row"><img src="images/SizeNode.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`
-			return
-		}
-		if (split.includes("RangeNode")) {
-			splits.innerHTML += `<div class="row"><img src="images/RangeNode.svg"/><div class="name">${split}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`
-			return
-		}
-		splits.innerHTML += `<div class="row"><img src="images/${split}.svg"/><div class="name">${NameDictionary[split]}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
+
+		splits.innerHTML += `<div class="row"><img src="images/${split}.svg"/><div class="name">${replaceName(split)}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
 	});
+
 	pb.innerHTML = IGTFormattedString(data.PersonalBest);
 	document.getElementById("splits").scrollTop = document.getElementById("splits").scrollHeight;
-}
-
-// list of item strings
-var progressionItems = {
-	Drill: "Laser Drill",
-	AddressDisruptor1: "Address Disruptor 1",
-	HighJump: "Field Disruptor",
-	GlitchTeleport: "Modified Lab Coat",
-	DroneGun: "Remote Drone",
-	AddressDisruptor2: "Address Disruptor 2",
-	Grapple: "Grapple",
-	BlackCoat: "Trenchcoat",
-	GlitchBomb: "Address Bomb",
-	DroneTeleport: "Drone Teleport",
-	RedCoat: "Red Coat"
-}
-
-// partially implemented, sorry!
-var replacedNames = {
-	// weapons
-	VerticalSpread: "Hypo-Atomizer",
-	FireWall: "Firewall",
-	DataGrenade: "Data Bomb",
-	WallTrace: "Orbital Discharge",
-	Swim: "Quantum Variegator",
-	InertialPulse: "Inertial Pulse",
-	DistortionField: "Distortion Field",
-	LightningGun: "Lightning Gun",
-	TetheredCharge: "Tethered Charge",
-	WebSlicer: "Scissor Beam",
-	HeatSeeker: "Heat Seeker",
-
-	// other items
-	EnhancedLaunch: "Enhanced Drone Launch",
-	BreachSuppressor: "Sudran Key",
-	TendrilsTop: "Bioflux Accelerator",
-	TendrilsBottom: "Bioflux Accelerator",
-
-	// events
-	RepairDronesEnabled: "Repair Drones Enabled"
-}
-
-var bossNames = {
-	SecurityWorm: "Xedur",
-	SoldierBoss: "Telal",
-	SlugBoss: "Uruku",
-	ScorpionBoss: "GirTab",
-	MantaBoss: "Vision",
-	DeformedTrace: "Clone",
-	SpitBugBoss: "Ukhu",
-	SecurityWormAdvanced: "Xedur Hul",
-	End: "Athetos"
-}
-
-function replaceNames(name) {
-	if(name in progressionItems) return progressionItems[name]
-	if(name in replacedNames) return replacedNames[name]
-	return name
 }
 
 function IGTFormattedString(timestamp) {
@@ -255,5 +201,5 @@ function IGTFormattedString(timestamp) {
 
 function ClearAll() {
 	splits.innerHTML = ""
-	igt.innerHTML = "00:00:00.000"
+	igt.innerHTML = "00:00:00.000";
 }
