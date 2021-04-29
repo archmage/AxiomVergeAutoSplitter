@@ -140,10 +140,10 @@ function checkGoMode(split) {
 	if(GrappleGoMode.includes(split)) grappleGoModeCount += 1;
 	if(DroneGoMode.includes(split)) droneGoModeCount += 1;
 
-	if(grappleGoModeCount == 3) {
+	if(grappleGoModeCount == GrappleGoMode.length) {
 		splits.innerHTML += `<div class="gomode"><div class="preline"></div><div class="type">GRAPPLE GO MODE</div><div class="postline"></div></div>`
 	}
-	if(droneGoModeCount == 3) {
+	if(droneGoModeCount == DroneGoMode.length) {
 		splits.innerHTML += `<div class="gomode"><div class="preline"></div><div class="type">DRONE GO MODE</div><div class="postline"></div></div>`
 	}
 }
@@ -166,7 +166,9 @@ function appendData(data) {
 		if (split in ProgressionItems)
 		{
 			splits.innerHTML += `<div class="row progression"><img src="images/${split}.svg"/><div class="name">✩ ${ProgressionItems[split]}</div><div class="split">${IGTFormattedString(data.Splits[split])}</div></div>`;
-			checkGoMode(split)
+			if(grappleGoModeCount < GrappleGoMode.length || droneGoModeCount < DroneGoMode.length) {
+				checkGoMode(split)
+			}
 			return;
 		}
 		if (split.includes("Note")) {
