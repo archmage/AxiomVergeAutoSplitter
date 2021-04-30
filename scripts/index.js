@@ -217,4 +217,6 @@ function IGTFormattedString(timestamp) {
 function ClearAll() {
 	splits.innerHTML = ""
 	igt.innerHTML = "00:00:00.000";
+	grappleGoModeCount = 0;
+	droneGoModeCount = 0;
 }
