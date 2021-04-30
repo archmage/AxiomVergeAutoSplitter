@@ -61,14 +61,14 @@ const Events = {
 }
 
 const Bosses = {
-	SecurityWorm: "Xedur",
-	SoldierBoss: "Telal",
-	SlugBoss: "Uruku",
-	ScorpionBoss: "Gir-Tab",
-	MantaBoss: "Vision",
-	DeformedTrace: "Clone",
-	SpitBugBoss: "Ukhu",
-	SecurityWormAdvanced: "Xedur Hul",
+	Xedur: "Xedur",
+	Telal: "Telal",
+	Uruku: "Uruku",
+	GirTab: "Gir-Tab",
+	Vision: "Vision",
+	Clone: "Clone",
+	Ukhu: "Ukhu",
+	XedurHul: "Xedur Hul",
 	End: "Athetos"
 }
 
@@ -209,9 +209,6 @@ function IGTFormattedString(timestamp) {
 	if (hours > 0) minutesFormatted = minutesFormatted.padStart(2, '0')
 
 	return `${hoursFormatted}${minutesFormatted}:${Math.floor(seconds).toString().padStart(2, '0')}.${Math.floor(milliseconds).toString().padStart(3, '0')}`
-
-	// old
-	// return `${Math.floor(hours).toString().padStart(2, '0')}:${Math.floor(minutes).toString().padStart(2, '0')}:${Math.floor(seconds).toString().padStart(2, '0')}.${Math.floor(milliseconds).toString().padStart(3, '0')}`
 }
 
 function ClearAll() {
