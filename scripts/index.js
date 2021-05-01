@@ -142,9 +142,11 @@ function checkGoMode(split) {
 
 	if(grappleGoModeCount == GrappleGoMode.length) {
 		splits.innerHTML += `<div class="gomode"><div class="preline"></div><div class="type">GRAPPLE GO MODE</div><div class="postline"></div></div>`
+		grappleGoModeCount += 1;
 	}
 	if(droneGoModeCount == DroneGoMode.length) {
 		splits.innerHTML += `<div class="gomode"><div class="preline"></div><div class="type">DRONE GO MODE</div><div class="postline"></div></div>`
+		droneGoModeCount += 1;
 	}
 }
 
